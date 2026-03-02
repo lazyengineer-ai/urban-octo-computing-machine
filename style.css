@@ -1,0 +1,110 @@
+/* Additional custom styles for the wedding invitation */
+
+/* Smooth transitions for all interactive elements */
+* {
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Custom selection color */
+::selection {
+    background-color: #D4AF37;
+    color: #722F37;
+}
+
+/* Focus styles for accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid #D4AF37;
+    outline-offset: 2px;
+}
+
+/* Prevent text selection on decorative elements */
+.mandala,
+.float {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Image loading placeholder */
+img {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+img[src] {
+    animation: none;
+    background: none;
+}
+
+/* Mobile touch improvements */
+@media (hover: none) {
+    .event-card:hover {
+        transform: none;
+    }
+    
+    .btn-shine::before {
+        display: none;
+    }
+}
+
+/* Loading animation */
+@keyframes loading {
+    0% { transform: translateX(-100%); }
+    50% { transform: translateX(0); }
+    100% { transform: translateX(100%); }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .mandala {
+        animation: none;
+    }
+    
+    .float {
+        animation: none;
+    }
+    
+    .heart-beat {
+        animation: none;
+    }
+}
+
+/* Print styles for saving the invitation */
+@media print {
+    nav,
+    #musicToggle,
+    #loader,
+    .reveal-up,
+    .reveal-left,
+    .reveal-right {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    
+    body {
+        background: white;
+    }
+    
+    .glass {
+        background: white;
+        border: 1px solid #ccc;
+    }
+}

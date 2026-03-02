@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajan & Riya - Wedding Invitation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-maroon: #722F37;
+            --primary-gold: #D4AF37;
+            --cream: #FDF5E6;
+            --peach: #FFDAB9;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .font-script {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FDF5E6;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #722F37;
+            border-radius: 4px;
+        }
+        
+        /* Mandala Animation */
+        .mandala {
+            animation: rotate 60s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Floating Animation */
+        .float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* Heart Beat */
+        .heart-beat {
+            animation: heartBeat 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #722F37 0%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Glass Morphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Floral Pattern Background */
+        .floral-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Hide scrollbar for music player */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Paisley Pattern */
+        .paisley-border {
+            background-image: radial-gradient(circle at 50% 0%, #D4AF37 2px, transparent 2px);
+            background-size: 40px 20px;
+            background-repeat: repeat-x;
+        }
+        
+        /* Timeline Line */
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #722F37, #D4AF37, #722F37);
+            transform: translateX(-50%);
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-line::before {
+                left: 20px;
+            }
+        }
+        
+        /* Card Hover Effect */
+        .event-card {
+            transition: all 0.4s ease;
+        }
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(114, 47, 55, 0.15);
+        }
+        
+        /* Custom Animations */
+        @keyframes slowZoom {
+            0%, 100% { transform: scale(1.1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        @keyframes gentleZoom {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+        }
+        
+        @keyframes loading {
+            0% { transform: translateX(-100%); }
+            50% { transform: translateX(0); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .animate-\[slowZoom_20s_ease-in-out_infinite\] {
+            animation: slowZoom 20s ease-in-out infinite;
+        }
+        
+        .animate-\[gentleZoom_10s_ease-in-out_infinite\] {
+            animation: gentleZoom 10s ease-in-out infinite;
+        }
+        
+        .animate-\[heartBeat_1\.5s_ease-in-out_infinite\] {
+            animation: heartBeat 1.5s ease-in-out infinite;
+        }
+        
+        .animate-\[loading_2s_ease-in-out_infinite\] {
+            animation: loading 2s ease-in-out infinite;
+        }
+        
+        .animate-\[float_6s_ease-in-out_infinite\] {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .animate-\[float_8s_ease-in-out_infinite_1s\] {
+            animation: float 8s ease-in-out infinite 1s;
+        }
+        
+        .animate-\[float_7s_ease-in-out_infinite_2s\] {
+            animation: float 7s ease-in-out infinite 2s;
+        }
+        
+        .animate-\[float_9s_ease-in-out_infinite_0\.5s\] {
+            animation: float 9s ease-in-out infinite 0.5s;
+        }
+        
+        .animate-\[float_6s_ease-in-out_infinite_1\.5s\] {
+            animation: float 6s ease-in-out infinite 1.5s;
+        }
+        
+        .animate-\[spin_20s_linear_infinite\] {
+            animation: spin 20s linear infinite;
+        }
+        
+        .animate-\[spin_15s_linear_infinite_reverse\] {
+            animation: spin 15s linear infinite reverse;
+        }
+        
+        /* Button Shine Effect */
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shine::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+        .btn-shine:hover::before {
+            left: 100%;
+        }
+    </style>
+</head>
+<body class="bg-[#FDF5E6] text-gray-800 floral-bg">
+
+    <div id="loader" class="fixed inset-0 z-50 flex flex-col items-center justify-center transition-opacity duration-1000">
+        <div class="absolute inset-0 z-0">
+            <img src="https://huggingface.co/spaces/Jpatel125/deepsite-project-q8n40/resolve/main/images/bg%20event.jpg" 
+                 alt="Wedding Background" 
+                 class="w-full h-full object-cover scale-110 animate-[slowZoom_20s_ease-in-out_infinite]">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#2C0A0A] via-[#722F37]/80 to-[#4A1414]/90 backdrop-blur-sm"></div>
+        </div>
+
+        <div class="absolute inset-0 overflow-hidden pointer-events-none z-10">
+            <div class="absolute top-20 left-[10%] w-2 h-2 bg-[#D4AF37] rounded-full opacity-40 animate-[float_6s_ease-in-out_infinite]"></div>
+            <div class="absolute top-40 right-[15%] w-3 h-3 bg-[#FFD700] rounded-full opacity-30 animate-[float_8s_ease-in-out_infinite_1s]"></div>
+            <div class="absolute bottom-40 left-[20%] w-2 h-2 bg-[#D4AF37] rounded-full opacity-50 animate-[float_7s_ease-in-out_infinite_2s]"></div>
+            <div class="absolute top-60 right-[25%] w-2 h-2 bg-[#FFD700] rounded-full opacity-40 animate-[float_9s_ease-in-out_infinite_0.5s]"></div>
+            <div class="absolute bottom-60 right-[10%] w-3 h-3 bg-[#D4AF37] rounded-full opacity-30 animate-[float_6s_ease-in-out_infinite_1.5s]"></div>
+        </div>
+
+        <div class="relative z-20 text-center px-4 max-w-2xl mx-auto">
+            <div class="relative mb-10">
+                <div class="absolute -inset-4 rounded-full bg-gradient-to-r from-[#D4AF37] via-[#FFD700] to-[#D4AF37] opacity-30 blur-xl animate-pulse"></div>
+                
+                <div class="absolute -inset-2 rounded-full border-2 border-[#D4AF37]/40 animate-[spin_20s_linear_infinite]">
+                    <div class="absolute -top-1 left-1/2 w-3 h-3 bg-[#FFD700] rounded-full shadow-[0_0_10px_#FFD700]"></div>
+                </div>
+                
+                <div class="absolute -inset-1 rounded-full border border-[#D4AF37]/20 animate-[spin_15s_linear_infinite_reverse]"></div>
+                
+                <div class="relative w-48 h-48 md:w-56 md:h-56 mx-auto rounded-full overflow-hidden border-4 border-[#D4AF37] shadow-2xl">
+                    <img src="https://huggingface.co/spaces/Jpatel125/deepsite-project-q8n40/resolve/main/images/couple-portrait.jpg" 
+                         alt="Rajan & Riya" 
+                         class="w-full h-full object-cover animate-[gentleZoom_10s_ease-in-out_infinite]">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#722F37]/30 to-transparent"></div>
+                </div>
+
+                <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-[#722F37] rounded-full flex items-center justify-center border-2 border-[#D4AF37] shadow-lg animate-[heartBeat_1.5s_ease-in-out_infinite]">
+                    <i data-lucide="heart" class="w-5 h-5 text-[#D4AF37] fill-current"></i>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <div class="flex items-center justify-center space-x-3 mb-2">
+                    <div class="h-px w-8 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent"></div>
+                    <p class="text-[#D4AF37] font-serif text-sm tracking-[0.4em] uppercase">Shubh Vivah</p>
+                    <div class="h-px w-8 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent"></div>
+                </div>
+                
+                <h1 class="text-white font-serif text-4xl md:text-6xl font-bold tracking-wide drop-shadow-2xl">
+                    Rajan <span class="text-[#D4AF37] font-light">&</span> Riya
+                </h1>
+                
+                <p class="text-white/90 font-script text-xl md:text-2xl italic drop-shadow-lg">
+                    "Two souls, one heart"
+                </p>
+                
+                <div class="flex items-center justify-center space-x-4 my-6">
+                    <div class="h-px w-16 bg-gradient-to-r from-transparent to-[#D4AF37]"></div>
+                    <div class="w-3 h-3 bg-[#D4AF37] rounded-full animate-ping shadow-[0_0_10px_#D4AF37]"></div>
+                    <div class="h-px w-16 bg-gradient-to-l from-transparent to-[#D4AF37]"></div>
+                </div>
+            </div>
+
+            <div class="mt-8 max-w-xs mx-auto">
+                <div class="relative h-1 bg-white/20 rounded-full overflow-hidden backdrop-blur-sm">
+                    <div class="absolute inset-0 bg-gradient-to-r from-[#D4AF37] via-[#FFD700] to-[#D4AF37] animate-[loading_2s_ease-in-out_infinite] rounded-full shadow-[0_0_10px_#D4AF37]"></div>
+                </div>
+                <p class="text-[#D4AF37]/80 text-xs mt-3 font-serif tracking-widest uppercase animate-pulse">Loading your invitation...</p>
+            </div>
+
+            <p class="mt-8 text-[#D4AF37]/60 text-sm font-serif tracking-[0.3em]">॥ શુભમस्तु ॥</p>
+        </div>
+
+        <div class="absolute top-0 left-0 w-32 h-32 opacity-60 z-10">
+            <svg viewBox="0 0 100 100" class="w-full h-full text-[#D4AF37] fill-current drop-shadow-lg">
+                <path d="M0 0 L50 0 Q25 25 0 50 Z" fill="currentColor" opacity="0.4"/>
+                <circle cx="20" cy="20" r="4" fill="#FFD700" opacity="0.8"/>
+                <circle cx="35" cy="10" r="2" fill="#FFD700" opacity="0.6"/>
+            </svg>
+        </div>
+        <div class="absolute top-0 right-0 w-32 h-32 opacity-60 transform rotate-90 z-10">
+            <svg viewBox="0 0 100 100" class="w-full h-full text-[#D4AF37] fill-current drop-shadow-lg">
+                <path d="M0 0 L50 0 Q25 25 0 50 Z" fill="currentColor" opacity="0.4"/>
+                <circle cx="20" cy="20" r="4" fill="#FFD700" opacity="0.8"/>
+            </svg>
+        </div>
+        <div class="absolute bottom-0 left-0 w-32 h-32 opacity-60 transform -rotate-90 z-10">
+            <svg viewBox="0 0 100 100" class="w-full h-full text-[#D4AF37] fill-current drop-shadow-lg">
+                <path d="M0 0 L50 0 Q25 25 0 50 Z" fill="currentColor" opacity="0.4"/>
+                <circle cx="20" cy="20" r="4" fill="#FFD700" opacity="0.8"/>
+            </svg>
+        </div>
+        <div class="absolute bottom-0 right-0 w-32 h-32 opacity-60 transform rotate-180 z-10">
+            <svg viewBox="0 0 100 100" class="w-full h-full text-[#D4AF37] fill-current drop-shadow-lg">
+                <path d="M0 0 L50 0 Q25 25 0 50 Z" fill="currentColor" opacity="0.4"/>
+                <circle cx="20" cy="20" r="4" fill="#FFD700" opacity="0.8"/>
+            </svg>
+        </div>
+    </div>
+
+    <button id="musicToggle" class="fixed bottom-6 right-6 z-40 bg-[#722F37] text-[#D4AF37] p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 btn-shine">
+        <i data-lucide="music" class="w-6 h-6"></i>
+    </button>
+    
+    <audio id="weddingMusic" loop autoplay preload="auto">
+        <source src="https://archive.org/download/cd_indian-classical-music_ustad-ali-akbar-khan-pandit-swapan-chaud/disc1/01.%20Ustad%20Ali%20Akbar%20Khan%20-%20Raga%20Lankadahan%20Sarang%3A%20Alap%2C%20Jod%20%26%20Jhala.mp3" type="audio/mpeg">
+    </audio>
+
+    <nav class="fixed top-0 w-full z-40 transition-all duration-300" id="navbar">
+        <div class="glass px-6 py-4 mx-4 mt-4 rounded-full">
+            <div class="flex justify-between items-center max-w-6xl mx-auto">
+                <div class="font-serif text-[#722F37] font-bold text-xl">R & R</div>
+                <div class="hidden md:flex space-x-8 text-sm font-medium text-[#722F37]">
+                    <a href="#home" class="hover:text-[#D4AF37] transition-colors">Home</a>
+                    <a href="#couple" class="hover:text-[#D4AF37] transition-colors">Couple</a>
+                    <a href="#events" class="hover:text-[#D4AF37] transition-colors">Events</a>
+                    <a href="#gallery" class="hover:text-[#D4AF37] transition-colors">Gallery</a>
+                </div>
+                <button id="mobileMenuBtn" class="md:hidden text-[#722F37]">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div id="mobileMenu" class="hidden md:hidden mx-4 mt-2 glass rounded-2xl p-6">
+            <div class="flex flex-col space-y-4 text-center">
+                <a href="#home" class="text-[#722F37] font-medium">Home</a>
+                <a href="#couple" class="text-[#722F37] font-medium">Couple</a>
+                <a href="#events" class="text-[#722F37] font-medium">Events</a>
+                <a href="#gallery" class="text-[#722F37] font-medium">Gallery</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://huggingface.co/spaces/Jpatel125/deepsite-project-q8n40/resolve/main/images/couple%20landscape.jpg" 
+             alt="Rajan & Riya Hero Background" 
+             class="w-full h-full object-cover opacity-20">
+            <div class="absolute inset-0 bg-gradient-to-b from-[#722F37]/80 via-[#FDF5E6]/50 to-[#FDF5E6]"></div>
+        </div>
+        
+        <div class="absolute top-20 left-10 w-32 h-32 opacity-20 mandala">
+            <svg viewBox="0 0 100 100" class="w-full h-full text-[#D4AF37] fill-current">
+                <path d="M50 0 C20 0 0 20 0 50 C0 80 20 100 50 100 C80 100 100 80 100 50 C100 20 80 0 50 0 Z"/>
+            </svg>
+        </div>
+        <div class="absolute bottom-20 right-10 w-40 h-40 opacity-20 mandala" style="animation-direction: reverse;">
+            <svg viewBox="0 0 100 100" class="w-full h-full text-[#722F37] fill-current">
+                <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="2"/>
+                <path d="M50 10 Q60 30 50 50 Q40 70 50 90" fill="none" stroke="currentColor" stroke-width="2"/>
+                <path d="M10 50 Q30 60 50 50 Q70 40 90 50" fill="none" stroke="currentColor" stroke-width="2"/>
+            </svg>
+        </div>
+        
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+            <div class="reveal-up mb-4">
+                <span class="text-[#722F37] font-script text-2xl md:text-3xl italic">The Wedding of</span>
+            </div>
+            
+            <div class="reveal-up mb-6">
+                <h1 class="font-serif text-6xl md:text-8xl lg:text-9xl text-[#722F37] font-bold tracking-wide mb-2">
+                    Rajan
+                </h1>
+                <div class="flex items-center justify-center my-4">
+                    <span class="h-px w-16 bg-[#D4AF37]"></span>
+                    <i data-lucide="heart" class="w-8 h-8 text-[#D4AF37] mx-4 heart-beat fill-current"></i>
+                    <span class="h-px w-16 bg-[#D4AF37]"></span>
+                </div>
+                <h1 class="font-serif text-6xl md:text-8xl lg:text-9xl text-[#722F37] font-bold tracking-wide">
+                    Riya
+                </h1>
+            </div>
+            
+            <div class="reveal-up mt-8">
+                <p class="font-script text-2xl md:text-3xl text-[#722F37] mb-4">Are getting married</p>
+                <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg">
+                    <i data-lucide="calendar" class="w-5 h-5 text-[#D4AF37] mr-2"></i>
+                    <span class="text-[#722F37] font-medium">March 15, 2026</span>
+                </div>
+            </div>
+            
+            <div class="reveal-up mt-12">
+                <a href="#events" class="inline-flex items-center bg-[#722F37] text-white px-8 py-4 rounded-full font-medium hover:bg-[#5a252c] transition-all duration-300 btn-shine shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    <span>View Invitation</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 ml-2 animate-bounce"></i>
+                </a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i data-lucide="chevrons-down" class="w-8 h-8 text-[#722F37] opacity-60"></i>
+        </div>
+    </section>
+
+    <section class="py-16 bg-[#722F37] relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="mandala w-96 h-96 absolute -top-20 -left-20 text-[#D4AF37]">
+                <svg viewBox="0 0 100 100" class="w-full h-full fill-current">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                </svg>
+            </div>
+        </div>
+        
+        <div class="max-w-6xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="font-serif text-3xl md:text-4xl text-[#D4AF37] mb-2">Counting Down to Our Big Day</h2>
+                <div class="w-24 h-1 bg-[#D4AF37] mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-3xl mx-auto">
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center border border-[#D4AF37]/30">
+                    <div id="days" class="font-serif text-4xl md:text-5xl text-[#D4AF37] font-bold mb-2">00</div>
+                    <div class="text-white/80 text-sm uppercase tracking-wider">Days</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center border border-[#D4AF37]/30">
+                    <div id="hours" class="font-serif text-4xl md:text-5xl text-[#D4AF37] font-bold mb-2">00</div>
+                    <div class="text-white/80 text-sm uppercase tracking-wider">Hours</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center border border-[#D4AF37]/30">
+                    <div id="minutes" class="font-serif text-4xl md:text-5xl text-[#D4AF37] font-bold mb-2">00</div>
+                    <div class="text-white/80 text-sm uppercase tracking-wider">Minutes</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center border border-[#D4AF37]/30">
+                    <div id="seconds" class="font-serif text-4xl md:text-5xl text-[#D4AF37] font-bold mb-2">00</div>
+                    <div class="text-white/80 text-sm uppercase tracking-wider">Seconds</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="couple" class="py-20 md:py-32 relative">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16 reveal-up">
+                <span class="text-[#D4AF37] font-medium tracking-widest uppercase text-sm">The Couple</span>
+                <h2 class="font-serif text-4xl md:text-5xl text-[#722F37] mt-2 mb-4">Two Hearts, One Love</h2>
+                <div class="w-24 h-1 bg-[#D4AF37] mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="flex justify-center mb-16 reveal-up">
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-[#D4AF37]/20 rounded-full blur-2xl animate-pulse"></div>
+                    <div class="relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-[#D4AF37] shadow-2xl">
+                        <img src="https://huggingface.co/spaces/Jpatel125/deepsite-project-q8n40/resolve/main/images/couple-portrait.jpg" 
+                             alt="Rajan & Riya" 
+                             class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#722F37]/40 to-transparent"></div>
+                    </div>
+                    <div class="absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-[#722F37] text-[#D4AF37] px-6 py-2 rounded-full shadow-xl border-2 border-[#D4AF37] flex items-center space-x-2 whitespace-nowrap">
+                        <i data-lucide="heart" class="w-5 h-5 fill-current animate-pulse"></i>
+                        <span class="font-serif font-bold">Getting Married</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-start max-w-4xl mx-auto">
+                <div class="reveal-left text-center md:text-right">
+                    <h3 class="font-serif text-3xl text-[#722F37] mb-2">Rajan Patel</h3>
+                    <p class="text-[#D4AF37] font-medium mb-4">Son of Shri Bhupendrabhai Govindji Patel <br>& Late Vanitaben Bhupendrabhai Patel</p>
+                    <p class="text-gray-600 leading-relaxed">
+                        Rajan believes in tradition and modernity in equal measure. He found his perfect match in Riya, and together they dream of building a life filled with love and laughter.
+                    </p>
+                    <div class="flex justify-center md:justify-end space-x-4 mt-4">
+                        <a href="https://www.instagram.com/rajan_121223?igsh=cjVjbzhwc29icXJm" target="_blank" rel="noopener noreferrer" class="text-[#722F37] hover:text-[#D4AF37] transition-colors">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="reveal-right text-center md:text-left">
+                    <h3 class="font-serif text-3xl text-[#722F37] mb-2">Riya Patel</h3>
+                    <p class="text-[#D4AF37] font-medium mb-4">Daughter of Shri Hareshbhai Ramanbhai Patel <br>& Sushilaben Hareshbhai Patel</p>
+                    <p class="text-gray-600 leading-relaxed">
+                        Hailing from Karambela village, Riya brings grace and warmth everywhere she goes. Her smile lights up every room, and her love for Rajan knows no bounds. She can't wait to begin this beautiful journey.
+                    </p>
+                    <div class="flex justify-center md:justify-start space-x-4 mt-4">
+                        <a href="https://www.instagram.com/riyap1212?igsh=bHp0dHFtbGF3dWhj" target="_blank" rel="noopener noreferrer" class="text-[#722F37] hover:text-[#D4AF37] transition-colors">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-20 text-center reveal-up">
+                <div class="max-w-3xl mx-auto bg-white/60 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-xl border border-[#D4AF37]/20 relative">
+                    <i data-lucide="quote" class="w-12 h-12 text-[#D4AF37]/30 absolute top-4 left-4"></i>
+                    <p class="font-script text-2xl md:text-3xl text-[#722F37] italic leading-relaxed">
+                        "On my Mama's special day, my little heart says... please do come. Your presence will make our day even sweeter."
+                    </p>
+                    <p class="mt-4 font-serif text-[#D4AF37] font-bold text-xl">— Niyana</p>
+                    <div class="mt-6 flex justify-center">
+                        <span class="h-px w-16 bg-[#D4AF37]"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5">
+            <div class="mandala w-96 h-96 absolute top-0 left-0 text-[#722F37]">
+                <svg viewBox="0 0 100 100" class="w-full h-full fill-current">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                </svg>
+            </div>
+        </div>
+        
+        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
+            <div class="reveal-up mb-12">
+                <span class="text-[#D4AF37] font-medium tracking-widest uppercase text-sm">Forever In Our Hearts</span>
+                <h2 class="font-serif text-4xl md:text-5xl text-[#722F37] mt-2 mb-4">A Mother's Blessing</h2>
+                <div class="w-24 h-1 bg-[#D4AF37] mx-auto rounded-full mb-8"></div>
+            </div>
+            
+            <div class="reveal-up max-w-2xl mx-auto bg-[#FDF5E6] p-8 md:p-12 rounded-3xl shadow-xl border border-[#D4AF37]/20 relative">
+                <i data-lucide="quote" class="w-10 h-10 text-[#D4AF37]/20 absolute top-6 left-6"></i>
+                
+                <div class="mb-8 relative w-48 h-48 md:w-56 md:h-56 mx-auto rounded-full overflow-hidden border-4 border-[#D4AF37] shadow-lg">
+                    <img src="https://huggingface.co/spaces/Jpatel125/deepsite-project-q8n40/resolve/main/images/family-memorial.jpg" 
+                         alt="Late Vanitaben with husband Bhupendrabhai and son Rajan" 
+                         class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                    <div class="absolute inset-0 bg-[#722F37]/10 hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+                </div>
+                
+                <h3 class="font-serif text-2xl text-[#722F37] font-bold mb-1">Late Vanitaben Bhupendrabhai Patel</h3>
+                <p class="text-[#D4AF37] font-medium mb-6">Wife of Shri Bhupendrabhai Govindji Patel</p>
+                
+                <p class="font-script text-xl md:text-2xl text-[#722F37] leading-relaxed italic">
+                    "Though her physical presence is deeply missed, her unconditional love and guiding light continue to surround us. From the heavens above, she showers her eternal blessings and Aashirwad upon Rajan and Riya as they unite in love. She lives on in our traditions, our smiles, and our hearts today and always."
+                </p>
+                
+                <div class="mt-8 flex justify-center items-center space-x-3">
+                    <span class="h-px w-12 bg-[#D4AF37]/50"></span>
+                    <i data-lucide="heart" class="w-6 h-6 text-[#D4AF37] fill-current"></i>
+                    <span class="h-px w-12 bg-[#D4AF37]/50"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="events" class="py-20 md:py-32 bg-gradient-to-b from-[#FDF5E6] to-white relative">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="text-center mb-16 reveal-up">
+                <span class="text-[#D4AF37] font-medium tracking-widest uppercase text-sm">Wedding Events</span>
+                <h2 class="font-serif text-4xl md:text-5xl text-[#722F37] mt-2 mb-4">Ceremonies & Celebrations</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Join us in celebrating our love through these traditional ceremonies filled with joy, music, and blessings.</p>
+                <div class="w-24 h-1 bg-[#D4AF37] mx-auto rounded-full mt-4"></div>
+            </div>
+            
+            <div class="relative timeline-line space-y-12 md:space-y-0">
+                
+                <div class="relative md:flex items-center justify-between reveal-up mb-12">
+                    <div class="md:w-5/12 md:pr-12 md:text-right mb-4 md:mb-0">
+                        <div class="event-card bg-white p-6 rounded-2xl shadow-lg border-t-4 border-[#FFD700]">
+                            <div class="flex items-center md:justify-end space-x-2 mb-3">
+                                <h3 class="font-serif text-2xl text-[#722F37]">Pithi / Haldi</h3>
+                                <i data-lucide="sun" class="w-6 h-6 text-[#FFD700]"></i>
+                            </div>
+                            <p class="text-gray-600 mb-3">The auspicious turmeric ceremony to bless the couple with glowing skin and prosperity.</p>
+                            <div class="flex items-center md:justify-end space-x-4 text-sm text-[#722F37] font-medium">
+                                <span class="flex items-center"><i data-lucide="calendar" class="w-4 h-4 mr-1"></i> March 13, 2026</span>
+                                <span class="flex items-center"><i data-lucide="clock" class="w-4 h-4 mr-1"></i> 10:00 AM</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#FFD700] rounded-full items-center justify-center border-4 border-[#FDF5E6] z-10">
+                        <i data-lucide="sun" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <div class="md:w-5/12 md:pl-12">
+                        <img src="https://huggingface.co/spaces/Jpatel125/deepsite-project-q8n40/resolve/main/images/event-haldi.jpg" alt="Haldi" class="rounded-2xl shadow-lg w-full h-48 object-cover">
+                    </div>
+                </div>
+
+                <div class="relative md:flex items-center justify-between reveal-up md:flex-row-reverse mb-12">
+                    <div class="md:w-5/12 md:pl-12 md:text-left mb-4 md:mb-0">
+                        <div class="event-card bg-white p-6 rounded-2xl shadow-lg border-t-4 border-[#D4AF37]">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <i data-lucide="star" class="w-6 h-6 text-[#D4AF37]"></i>
+                                <h3 class="font-serif text-2xl text-[#722F37]">Grah Shanti</h3>
+                            </div>
+                            <p class="text-gray-600 mb-3">A sacred pooja to seek blessings from the nine planets for a peaceful and happy married life.</p>
+                            <div class="flex items-center space-x-4 text-sm text-[#722F37] font-medium">
+                                <span class="flex items-center"><i data-lucide="calendar" class="w-4 h-4 mr-1"></i> March 14, 2026</span>
+                                <span class="flex items-center"><i data-lucide="clock" class="w-4 h-4 mr-1"></i> 3:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#722F37] rounded-full items-center justify-center border-4 border-[#FDF5E6] z-10">
+                        <i data-lucide="star" class="w-5 h-5 text-[#D4AF37]"></i>
+                    </div>
+                    <div class="md:w-5/12 md:pr-12">
+                        <img src="https://huggingface.co/spaces/Jpatel125/deepsite-project-q8n40/resolve/main/images/event-grahshanti.jpg" alt="Grah Shanti" class="rounded-2xl shadow-lg w-full h-48 object-cover">
+                    </div>
+                </div>
+                
+                <div class="relative md:flex items-center justify-between reveal-up mb-12">
+                    <div class="md:w-5/12 md:pr-12 md:text-right mb-4 md:mb-0">
+                        <div class="event-card bg-white p-6 rounded-2xl shadow-lg border-t-4 border-[#D4AF37]">
+                            <div class="flex items-center md:justify-end space-x-2 mb-3">
+                                <h3 class="font-serif text-2xl text-[#722F37]">Sangeet Night</h3>
+                                <i data-lucide="music" class="w-6 h-6 text-[#D4AF37]"></i>
+                            </div>
+                            <p class="text-gray-600 mb-3">An evening of music, dance, and celebration with family and friends.</p>
+                            <div class="flex items-center md:justify-end space-x-4 text-sm text-[#722F37] font-medium">
+                                <span class="flex items-center"><i data-lucide="calendar" class="w-4 h-4 mr-1"></i> March 14, 2026</span>
+                                <span class="flex items-center"><i data-lucide="clock" class="w-4 h-4 mr-1"></i> 8:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#722F37] rounded-full items-center justify-center border-4 border-[#FDF5E6] z-10">
+                        <i data-lucide="music" class="w-5 h-5 text-[#D4AF37]"></i>
+                    </div>
+                    <div class="md:w-5/12 md:pl-12">
+                        <img src="https://huggingface.co/spaces/Jpatel125/deepsite-project-q8n40/resolve/main/images/event-sangeet.jpg" alt="Sangeet" class="rounded-2xl shadow-lg w-full h-48 object-cover">
+                    </div>
+                </div>
+
+                <div class="relative md:flex items-center justify-between reveal-up md:flex-row-reverse mb-12">
+                    <div class="md:w-5/12 md:pl-12 md:text-left mb-4 md:mb-0">
+                        <div class="event-card bg-white p-6 rounded-2xl shadow-lg border-t-4 border-[#D4AF37]">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <i data-lucide="gift" class="w-6 h-6 text-[#D4AF37]"></i>
+                                <h3 class="font-serif text-2xl text-[#722F37]">Rudu Mameru</h3>
+                            </div>
+                            <p class="text-gray-600 mb-3">A joyous tradition where the maternal family arrives with gifts and blessings for the couple.</p>
+                            <div class="flex items-center space-x-4 text-sm text-[#722F37] font-medium">
+                                <span class="flex items-center"><i data-lucide="calendar" class="w-4 h-4 mr-1"></i> March 15, 2026</span>
+                                <span class="flex items-center"><i data-lucide="clock" class="w-4 h-4 mr-1"></i> 10:30 AM</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#722F37] rounded-full items-center justify-center border-4 border-[#FDF5E6] z-10">
+                        <i data-lucide="gift" class="w-5 h-5 text-[#D4AF37]"></i>
+                    </div>
+                    <div class="md:w-5/12 md:pr-12">
+                        <img src="https://huggingface.co/spaces/Jpatel125/deepsite-project-q8n40/resolve/main/images/event-mameru.jpg" alt="Mameru" class="rounded-2xl shadow-lg w-full h-48 object-cover">
+                    </div>
+                </div>
+
+                <div class="relative md:flex items-center justify-between reveal-up mb-12">
+                    <div class="md:w-5/12 md:pr-12 md:text-right mb-4 md:mb-0">
+                        <div class="event-card bg-white p-6 rounded-2xl shadow-lg border-t-4 border-[#D4AF37]">
+                            <div class="flex items-center md:justify-end space-x-2 mb-3">
+                                <h3 class="font-serif text-2xl text-[#722F37]">Wedding Feast</h3>
+                                <i data-lucide="utensils" class="w-6 h-6 text-[#D4AF37]"></i>
+                            </div>
+                            <p class="text-gray-600 mb-3">Join us for a grand traditional lunch celebration.</p>
+                            <div class="flex items-center md:justify-end space-x-4 text-sm text-[#722F37] font-medium">
+                                <span class="flex items-center"><i data-lucide="calendar" class="w-4 h-4 mr-1"></i> March 15, 2026</span>
+                                <span class="flex items-center"><i data-lucide="clock" class="w-4 h-4 mr-1"></i> 11:00 AM</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#722F37] rounded-full items-center justify-center border-4 border-[#FDF5E6] z-10">
+                        <i data-lucide="utensils" class="w-5 h-5 text-[#D4AF37]"></i>
+                    </div>
+                    <div class="md:w-5/12 md:pl-12">
+                        <img src="https://huggingface.co/spaces/Jpatel125/deepsite-project-q8n40/resolve/main/images/event-feast.jpg" alt="Wedding Feast" class="rounded-2xl shadow-lg w-full h-48 object-cover">
+                    </div>
+                </div>
+
+                <div class="relative md:flex items-center justify-between reveal-up md:flex-row-reverse mb-12">
+                    <div class="md:w-5/12 md:pl-12 md:text-left mb-4 md:mb-0">
+                        <div class="event-card bg-white p-6 rounded-2xl shadow-lg border-t-4 border-[#D4AF37]">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <i data-lucide="users" class="w-6 h-6 text-[#D4AF37]"></i>
+                                <h3 class="font-serif text-2xl text-[#722F37]">Var Yatra</h3>
+                            </div>
+                            <p class="text-gray-600 mb-3">The groom's grand procession filled with music, dancing, and joy as he makes his way to the venue.</p>
+                            <div class="flex items-center space-x-4 text-sm text-[#722F37] font-medium">
+                                <span class="flex items-center"><i data-lucide="calendar" class="w-4 h-4 mr-1"></i> March 15, 2026</span>
+                                <span class="flex items-center"><i data-lucide="clock" class="w-4 h-4 mr-1"></i> 4:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#722F37] rounded-full items-center justify-center border-4 border-[#FDF5E6] z-10">
+                        <i data-lucide="users" class="w-5 h-5 text-[#D4AF37]"></i>
+                    </div>
+                    <div class="md:w-5/12 md:pr-12">
+                        <img src="https://huggingface.co/spaces/Jpatel125/deepsite-project-q8n40/resolve/main/images/event-baraat.jpg" alt="Baraat" class="rounded-2xl shadow-lg w-full h-48 object-cover">
+                    </div>
+                </div>
+                                
+                <div class="relative md:flex items-center justify-between reveal-up mb-12">
+                    <div class="md:w-5/12 md:pr-12 md:text-right mb-4 md:mb-0">
+                        <div class="event-card bg-gradient-to-br from-[#722F37] to-[#5a252c] p-6 rounded-2xl shadow-xl text-white">
+                            <div class="flex items-center md:justify-end space-x-2 mb-3">
+                                <h3 class="font-serif text-2xl">Wedding Ceremony</h3>
+                                <i data-lucide="heart" class="w-6 h-6 text-[#D4AF37] fill-current"></i>
+                            </div>
+                            <p class="text-white/90 mb-3">The sacred union of two souls in the presence of Agni and our beloved family.</p>
+                            <div class="flex items-center md:justify-end space-x-4 text-sm text-[#D4AF37] font-medium">
+                                <span class="flex items-center"><i data-lucide="calendar" class="w-4 h-4 mr-1"></i> March 15, 2026</span>
+                                <span class="flex items-center"><i data-lucide="clock" class="w-4 h-4 mr-1"></i> 9:00 PM</span>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-white/20 flex md:justify-end">
+                                <p class="text-sm"><i data-lucide="map-pin" class="w-4 h-4 inline mr-1"></i> Paria (Wadima), Taluka Pardi, Dist. Valsad</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-16 h-16 bg-[#D4AF37] rounded-full items-center justify-center border-4 border-[#FDF5E6] z-10 shadow-lg">
+                        <i data-lucide="heart" class="w-8 h-8 text-[#722F37] fill-current heart-beat"></i>
+                    </div>
+                    <div class="md:w-5/12 md:pl-12">
+                        <img src="https://huggingface.co/spaces/Jpatel125/deepsite-project-q8n40/resolve/main/images/event-wedding.jpg" alt="Wedding" class="rounded-2xl shadow-lg w-full h-48 object-cover">
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="py-20 md:py-32 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16 reveal-up">
+                <span class="text-[#D4AF37] font-medium tracking-widest uppercase text-sm">Memories</span>
+                <h2 class="font-serif text-4xl md:text-5xl text-[#722F37] mt-2 mb-4">Photo Gallery</h2>
+                <div class="w-24 h-1 bg-[#D4AF37] mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+                <div class="reveal-up group relative overflow-hidden rounded-2xl shadow-lg aspect-[3/4] cursor-pointer bg-black/5 flex items-center justify-center" onclick="openLightbox(0)">
+                    <img src="https://huggingface.co/spaces/Jpatel125/deepsite-project-q8n40/resolve/main/images/gallery-1.jpg" alt="Gallery Image" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#722F37]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <p class="text-white font-medium">Beautiful Moments</p>
+                    </div>
+                </div>
+                <div class="reveal-up group relative overflow-hidden rounded-2xl shadow-lg aspect-[3/4] cursor-pointer bg-black/5 flex items-center justify-center md:mt-12" onclick="openLightbox(1)">
+                    <img src="https://huggingface.co/spaces/Jpatel125/deepsite-project-q8n40/resolve/main/images/gallery-2.jpg" alt="Gallery Image" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#722F37]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <p class="text-white font-medium">Together Forever</p>
+                    </div>
+                </div>
+                <div class="reveal-up group relative overflow-hidden rounded-2xl shadow-lg aspect-[3/4] cursor-pointer bg-black/5 flex items-center justify-center" onclick="openLightbox(2)">
+                    <img src="https://huggingface.co/spaces/Jpatel125/deepsite-project-q8n40/resolve/main/images/gallery-3.jpg" alt="Gallery Image" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#722F37]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <p class="text-white font-medium">Smiles & Joy</p>
+                    </div>
+                </div>
+                
+                <div class="reveal-up group relative overflow-hidden rounded-2xl shadow-lg aspect-[3/4] cursor-pointer bg-black/5 flex items-center justify-center md:mt-12" onclick="openLightbox(3)">
+                    <img src="https://huggingface.co/spaces/Jpatel125/deepsite-project-q8n40/resolve/main/images/gallery-4.jpg" alt="Gallery Image" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#722F37]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <p class="text-white font-medium">Cherished Memories</p>
+                    </div>
+                </div>
+                <div class="reveal-up group relative overflow-hidden rounded-2xl shadow-lg aspect-[3/4] cursor-pointer bg-black/5 flex items-center justify-center" onclick="openLightbox(4)">
+                    <img src="https://huggingface.co/spaces/Jpatel125/deepsite-project-q8n40/resolve/main/images/gallery-5.jpg" alt="Gallery Image" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#722F37]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <p class="text-white font-medium">Family Love</p>
+                    </div>
+                </div>
+                <div class="reveal-up group relative overflow-hidden rounded-2xl shadow-lg aspect-[3/4] cursor-pointer bg-black/5 flex items-center justify-center md:mt-12" onclick="openLightbox(5)">
+                    <img src="https://huggingface.co/spaces/Jpatel125/deepsite-project-q8n40/resolve/main/images/gallery-6.jpg" alt="Gallery Image" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#722F37]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <p class="text-white font-medium">Celebrating Us</p>
+                    </div>
+                </div>
+
+                <div class="reveal-up group relative overflow-hidden rounded-2xl shadow-lg aspect-[3/4] cursor-pointer bg-black/5 flex items-center justify-center" onclick="openLightbox(6)">
+                    <img src="https://huggingface.co/spaces/Jpatel125/deepsite-project-q8n40/resolve/main/images/gallery-7.jpg" alt="Gallery Image" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#722F37]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <p class="text-white font-medium">A New Chapter</p>
+                    </div>
+                </div>
+                <div class="reveal-up group relative overflow-hidden rounded-2xl shadow-lg aspect-[3/4] cursor-pointer bg-black/5 flex items-center justify-center md:mt-12" onclick="openLightbox(7)">
+                    <img src="https://huggingface.co/spaces/Jpatel125/deepsite-project-q8n40/resolve/main/images/gallery-8.jpg" alt="Gallery Image" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#722F37]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <p class="text-white font-medium">Endless Joy</p>
+                    </div>
+                </div>
+                <div class="reveal-up group relative overflow-hidden rounded-2xl shadow-lg aspect-[3/4] cursor-pointer bg-black/5 flex items-center justify-center" onclick="openLightbox(8)">
+                    <img src="https://huggingface.co/spaces/Jpatel125/deepsite-project-q8n40/resolve/main/images/gallery-9.jpg" alt="Gallery Image" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#722F37]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <p class="text-white font-medium">Perfect Match</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 md:py-32 bg-[#FDF5E6] relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5">
+            <div class="mandala w-96 h-96 absolute top-0 right-0 text-[#D4AF37]">
+                <svg viewBox="0 0 100 100" class="w-full h-full fill-current">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                </svg>
+            </div>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <div class="reveal-up mb-12">
+                <span class="text-[#D4AF37] font-medium tracking-widest uppercase text-sm">Capture The Magic</span>
+                <h2 class="font-serif text-4xl md:text-5xl text-[#722F37] mt-2 mb-4">Share Your Memories</h2>
+                <div class="w-24 h-1 bg-[#D4AF37] mx-auto rounded-full mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto leading-relaxed">Help us capture every beautiful moment! Scan the QR code below or click the button to upload the photos and videos you take during our celebration directly to our digital guestbook.</p>
+            </div>
+            
+            <div class="reveal-up flex flex-col items-center justify-center">
+                <div class="bg-white p-6 rounded-3xl shadow-xl border border-[#D4AF37]/30 mb-8 relative transition-transform hover:scale-105 duration-300">
+                    <div class="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-[#D4AF37]"></div>
+                    <div class="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-[#D4AF37]"></div>
+                    <div class="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-[#D4AF37]"></div>
+                    <div class="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-[#D4AF37]"></div>
+                    
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://script.google.com/macros/s/AKfycbyzAcF-W-iNTqMSQu5CS3GLhM5e65-mlCrG_Uj-E6bHFIhixvMUj9xKigzHbScnAypV-g/exec&color=722F37" 
+                         alt="Upload Photos QR Code" 
+                         class="w-48 h-48 md:w-56 md:h-56 object-contain rounded-xl">
+                </div>
+                
+                <a href="https://script.google.com/macros/s/AKfycbyzAcF-W-iNTqMSQu5CS3GLhM5e65-mlCrG_Uj-E6bHFIhixvMUj9xKigzHbScnAypV-g/exec" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-[#722F37] text-white px-8 py-4 rounded-full font-medium hover:bg-[#5a252c] transition-all duration-300 btn-shine shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    <i data-lucide="upload-cloud" class="w-5 h-5 mr-2"></i>
+                    <span>Open Upload Link</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div id="lightbox" class="fixed inset-0 z-50 hidden bg-black/95 backdrop-blur-sm flex items-center justify-center p-4">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white hover:text-[#D4AF37] transition-colors">
+            <i data-lucide="x" class="w-10 h-10"></i>
+        </button>
+        <button onclick="changeImage(-1)" class="absolute left-4 md:left-8 text-white hover:text-[#D4AF37] transition-colors">
+            <i data-lucide="chevron-left" class="w-10 h-10 md:w-12 md:h-12"></i>
+        </button>
+        <button onclick="changeImage(1)" class="absolute right-4 md:right-8 text-white hover:text-[#D4AF37] transition-colors">
+            <i data-lucide="chevron-right" class="w-10 h-10 md:w-12 md:h-12"></i>
+        </button>
+        <img id="lightboxImg" src="" alt="Gallery" class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl">
+        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-white text-center">
+            <p id="lightboxCaption" class="text-lg font-medium"></p>
+        </div>
+    </div>
+
+    <section class="py-20 md:py-32 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="reveal-left">
+                    <span class="text-[#D4AF37] font-medium tracking-widest uppercase text-sm">Location</span>
+                    <h2 class="font-serif text-4xl text-[#722F37] mt-2 mb-6">Wedding Venue</h2>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-[#722F37]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="map-pin" class="w-6 h-6 text-[#722F37]"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-[#722F37] text-lg">Pariya Wadi</h4>
+                                <p class="text-gray-600">Taluka Pardi, Dist. Valsad, Gujarat</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8 flex space-x-4">
+                        <a href="https://maps.app.goo.gl/dJToDPtf4RwxhaxH6?g_st=iw" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-[#722F37] text-white px-6 py-3 rounded-full font-medium hover:bg-[#5a252c] transition-colors">
+                            <i data-lucide="map" class="w-5 h-5 mr-2"></i>
+                            Get Directions
+                        </a>
+                    </div>
+                </div>
+                <div class="reveal-right">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                        <img src="https://huggingface.co/spaces/Jpatel125/deepsite-project-q8n40/resolve/main/images/venue-photo.jpg" alt="Venue" class="w-full h-96 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#722F37]/60 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 text-white">
+                            <h3 class="font-serif text-2xl mb-2">Pariya Wadi</h3>
+                            <p class="text-white/90 flex items-center">
+                                Family Self-Owned Farmhouse
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-[#FDF5E6]">
+        <div class="max-w-4xl mx-auto px-4 text-center reveal-up">
+            <h3 class="font-serif text-2xl text-[#722F37] mb-6">Eagerly Awaiting Your Presence</h3>
+            <div class="flex flex-wrap justify-center gap-4 md:gap-8 text-[#D4AF37] font-medium">
+                <span>Dr. Shruti Mignesh Patel</span>
+                <span class="hidden md:inline">•</span>
+                <span>Shri Mignesh Dhirubhai Patel</span>
+                <span class="hidden md:inline">•</span>
+                <span>Dr. Shreya Mitul Patel</span>
+                <span class="hidden md:inline">•</span>
+                <span>Shri Mitul Sureshbhai Patel</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#722F37] text-white py-16 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="mandala w-96 h-96 absolute -bottom-20 -right-20 text-[#D4AF37]">
+                <svg viewBox="0 0 100 100" class="w-full h-full fill-current">
+                    <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </div>
+        </div>
+        
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <div class="mb-8">
+                <h2 class="font-serif text-4xl md:text-5xl mb-4">Rajan & Riya</h2>
+                <p class="text-[#D4AF37] text-xl font-script italic">"Together is a wonderful place to be"</p>
+            </div>
+            
+            <div class="flex justify-center items-center space-x-4 mb-8">
+                <span class="h-px w-16 bg-[#D4AF37]/50"></span>
+                <i data-lucide="heart" class="w-6 h-6 text-[#D4AF37] fill-current heart-beat"></i>
+                <span class="h-px w-16 bg-[#D4AF37]/50"></span>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-12 text-sm">
+                <div>
+                    <i data-lucide="calendar" class="w-6 h-6 mx-auto mb-3 text-[#D4AF37]"></i>
+                    <p class="font-medium mb-1">Date</p>
+                    <p class="text-white/80">March 15, 2026</p>
+                </div>
+                <div>
+                    <i data-lucide="clock" class="w-6 h-6 mx-auto mb-3 text-[#D4AF37]"></i>
+                    <p class="font-medium mb-1">Time</p>
+                    <p class="text-white/80">9:00 PM onwards</p>
+                </div>
+                <div>
+                    <i data-lucide="map-pin" class="w-6 h-6 mx-auto mb-3 text-[#D4AF37]"></i>
+                    <p class="font-medium mb-1">Venue</p>
+                    <p class="text-white/80">Paria (Wadima), Gujarat</p>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-white/20">
+                <p class="text-white/60 text-sm">
+                    Made with <i data-lucide="heart" class="w-4 h-4 inline fill-current text-red-400"></i> for our special day
+                </p>
+                <p class="text-white/40 text-xs mt-2">&copy; 2026 Rajan & Riya. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+        
+        // Remove Loader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const loader = document.getElementById('loader');
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    initAnimations();
+                    lucide.createIcons();
+                }, 1000);
+            }, 3000);
+        });
+        
+        // Register GSAP ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Initialize Animations
+        function initAnimations() {
+            // Reveal Up Animations
+            gsap.utils.toArray('.reveal-up').forEach((elem, i) => {
+                gsap.from(elem, {
+                    scrollTrigger: {
+                        trigger: elem,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 50,
+                    opacity: 0,
+                    duration: 1,
+                    ease: "power3.out",
+                    delay: i * 0.1
+                });
+            });
+            
+            // Reveal Left
+            gsap.utils.toArray('.reveal-left').forEach(elem => {
+                gsap.from(elem, {
+                    scrollTrigger: {
+                        trigger: elem,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    },
+                    x: -50,
+                    opacity: 0,
+                    duration: 1,
+                    ease: "power3.out"
+                });
+            });
+            
+            // Reveal Right
+            gsap.utils.toArray('.reveal-right').forEach(elem => {
+                gsap.from(elem, {
+                    scrollTrigger: {
+                        trigger: elem,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    },
+                    x: 50,
+                    opacity: 0,
+                    duration: 1,
+                    ease: "power3.out"
+                });
+            });
+        }
+        
+        // Countdown Timer
+        const weddingDate = new Date('March 15, 2026 21:00:00').getTime();
+        
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Navbar Scroll Effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.classList.add('shadow-lg');
+            } else {
+                navbar.classList.remove('shadow-lg');
+            }
+            
+            lastScroll = currentScroll;
+        });
+        
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking links
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Music Toggle & Autoplay Fix
+        const musicToggle = document.getElementById('musicToggle');
+        const weddingMusic = document.getElementById('weddingMusic');
+        let isPlaying = false;
+
+        // Smart Autoplay: Try to play immediately, if blocked by browser, play on first click anywhere
+        weddingMusic.play().then(() => {
+            isPlaying = true;
+            musicToggle.innerHTML = '<i data-lucide="volume-2" class="w-6 h-6"></i>';
+            musicToggle.classList.add('animate-pulse');
+            lucide.createIcons();
+        }).catch(() => {
+            isPlaying = false;
+            document.addEventListener('click', function startMusic() {
+                weddingMusic.play();
+                isPlaying = true;
+                musicToggle.innerHTML = '<i data-lucide="volume-2" class="w-6 h-6"></i>';
+                musicToggle.classList.add('animate-pulse');
+                lucide.createIcons();
+                document.removeEventListener('click', startMusic);
+            }, { once: true });
+        });
+        
+        musicToggle.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent triggering the document click
+            if (isPlaying) {
+                weddingMusic.pause();
+                musicToggle.innerHTML = '<i data-lucide="music" class="w-6 h-6"></i>';
+                musicToggle.classList.remove('animate-pulse');
+            } else {
+                weddingMusic.play();
+                musicToggle.innerHTML = '<i data-lucide="volume-2" class="w-6 h-6"></i>';
+                musicToggle.classList.add('animate-pulse');
+            }
+            isPlaying = !isPlaying;
+            lucide.createIcons();
+        });
+        
+        // Gallery Lightbox array
+        const galleryImages = [
+            { src: 'https://huggingface.co/spaces/Jpatel125/deepsite-project-q8n40/resolve/main/images/gallery-1.jpg', caption: 'Beautiful Moments' },
+            { src: 'https://huggingface.co/spaces/Jpatel125/deepsite-project-q8n40/resolve/main/images/gallery-2.jpg', caption: 'Together Forever' },
+            { src: 'https://huggingface.co/spaces/Jpatel125/deepsite-project-q8n40/resolve/main/images/gallery-3.jpg', caption: 'Smiles & Joy' },
+            { src: 'https://huggingface.co/spaces/Jpatel125/deepsite-project-q8n40/resolve/main/images/gallery-4.jpg', caption: 'Cherished Memories' },
+            { src: 'https://huggingface.co/spaces/Jpatel125/deepsite-project-q8n40/resolve/main/images/gallery-5.jpg', caption: 'Family Love' },
+            { src: 'https://huggingface.co/spaces/Jpatel125/deepsite-project-q8n40/resolve/main/images/gallery-6.jpg', caption: 'Celebrating Us' },
+            { src: 'https://huggingface.co/spaces/Jpatel125/deepsite-project-q8n40/resolve/main/images/gallery-7.jpg', caption: 'A New Chapter' },
+            { src: 'https://huggingface.co/spaces/Jpatel125/deepsite-project-q8n40/resolve/main/images/gallery-8.jpg', caption: 'Endless Joy' },
+            { src: 'https://huggingface.co/spaces/Jpatel125/deepsite-project-q8n40/resolve/main/images/gallery-9.jpg', caption: 'Perfect Match' }
+        ];
+        
+        let currentImageIndex = 0;
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+        
+        function openLightbox(index) {
+            currentImageIndex = index;
+            updateLightbox();
+            lightbox.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            lightbox.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            if (currentImageIndex < 0) currentImageIndex = galleryImages.length - 1;
+            if (currentImageIndex >= galleryImages.length) currentImageIndex = 0;
+            updateLightbox();
+        }
+        
+        function updateLightbox() {
+            lightboxImg.src = galleryImages[currentImageIndex].src;
+            lightboxCaption.textContent = galleryImages[currentImageIndex].caption;
+        }
+        
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') changeImage(-1);
+            if (e.key === 'ArrowRight') changeImage(1);
+        });
+        
+        // RSVP Form Handling
+        const rsvpForm = document.getElementById('rsvpForm');
+        const successMessage = document.getElementById('successMessage');
+        
+        if (rsvpForm) {
+            rsvpForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // Simulate form submission
+                rsvpForm.style.display = 'none';
+                successMessage.classList.remove('hidden');
+                lucide.createIcons();
+            });
+        }
+        
+        function resetForm() {
+            if (rsvpForm) {
+                rsvpForm.reset();
+                rsvpForm.style.display = 'block';
+                successMessage.classList.add('hidden');
+            }
+        }
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
